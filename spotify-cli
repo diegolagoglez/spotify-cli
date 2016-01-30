@@ -36,7 +36,9 @@ function checkCommand() {
 }
 
 function spotifyDbusCommand() {
-	dbus-send --type=method_call --dest=$SPOTIFY_DBUS $SPOTIFY_DBUS_OBJECT_PATH ${SPOTIFY_DBUS_BASE_INTERFACE}.$1
+	local command="$1"
+	shift
+	dbus-send --type=method_call --dest=$SPOTIFY_DBUS $SPOTIFY_DBUS_OBJECT_PATH ${SPOTIFY_DBUS_BASE_INTERFACE}.$command "$@"
 }
 
 function checkSpotifyIsRunning() {

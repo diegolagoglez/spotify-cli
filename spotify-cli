@@ -35,6 +35,10 @@ function checkCommand() {
 	fi
 }
 
+function spotifyDbusCommand() {
+	dbus-send --type=method_call --dest=$SPOTIFY_DBUS $SPOTIFY_DBUS_OBJECT_PATH ${SPOTIFY_DBUS_BASE_INTERFACE}.$1
+}
+
 function checkSpotifyIsRunning() {
 	:
 }
@@ -45,19 +49,19 @@ function processOptions() {
 }
 
 function spotifyPlay() {
-	dbus-send --type=method_call --dest=$SPOTIFY_DBUS $SPOTIFY_DBUS_OBJECT_PATH ${SPOTIFY_DBUS_BASE_INTERFACE}.Play
+	spotifyDbusCommand Play
 }
 
 function spotifyPause() {
-	dbus-send --type=method_call --dest=$SPOTIFY_DBUS $SPOTIFY_DBUS_OBJECT_PATH ${SPOTIFY_DBUS_BASE_INTERFACE}.Pause
+	spotifyDbusCommand Pause
 }
 
 function spotifyNext() {
-	dbus-send --type=method_call --dest=$SPOTIFY_DBUS $SPOTIFY_DBUS_OBJECT_PATH ${SPOTIFY_DBUS_BASE_INTERFACE}.Next
+	spotifyDbusCommand Next
 }
 
 function spotifyPrev() {
-	dbus-send --type=method_call --dest=$SPOTIFY_DBUS $SPOTIFY_DBUS_OBJECT_PATH ${SPOTIFY_DBUS_BASE_INTERFACE}.Previous
+	spotifyDbusCommand Previous
 }
 
 function spotifyOpen() {

@@ -17,7 +17,7 @@ function help() {
 	echo "GPLv3 Diego Lago González <diego.lago.gonzalez@gmail.com>"
 	echo "Usage: $(basename -- $0) [options] <command>"
 	echo "Commands:"
-	echo "  play        Play/resume current song."
+	echo "  play        Play/pause current song."
 	echo "  pause       Pause current song."
 	echo "  next        Next song."
 	echo "  prev        Previous song."
@@ -53,7 +53,7 @@ function processOptions() {
 }
 
 function spotifyPlay() {
-	spotifyDbusCommand Play
+	spotifyDbusCommand PlayPause
 }
 
 function spotifyPause() {

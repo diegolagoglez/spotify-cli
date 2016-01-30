@@ -42,7 +42,9 @@ function spotifyDbusCommand() {
 }
 
 function checkSpotifyIsRunning() {
-	:
+	if ! pidof spotify &>/dev/null; then
+		error "Spotify is not running." 1
+	fi
 }
 
 function processOptions() {
